@@ -1,7 +1,16 @@
 export default {
   title: "Pearson Tests of English",
+  description: 'I hate English at all!',
+  htmlContext: {
+    favicon: '/public/favicon.png',
+  },
+  editBranch: "development",
+  repository: "https://github.com/nguyenletan/PTE",
   menu: [
     "Pearson Tests of English",
+    "Write From Dictation",
+    "Repeat Sentence",
+    "Describe Image",
     {
       name: "Collocations",
       menu: [
@@ -41,23 +50,55 @@ export default {
         "33. Taste",
         "34. Statistics",
         "35. Movement & Speed",
-        "36. Changes"
+        "36. Changes",
+        "37. Speaking",
+        "38. Starting & Finishing",
+        "39. Success & Failure",
+        "40. Cause & Effect",
+        "41. Memories",
+        "42. Agreeing & Disagreeing",
+        "43. Beliefs & Doubts",
+        "44. Deciding & Choosing",
+        "45. Claiming & Denying",
+        "46. Liking & Disliking"
       ]
     },
-    "Write From Dictation",
-    "Repeat Sentence"
   ],
   themeConfig: {
     head: {},
     styles: {
       h1: {
         /*textTransform: 'uppercase'*/
+      },
+
+    },
+    colors: {
+      "text": "#00044c",
+      "background": "#FDFFFF",
+      "primary": "#47c1bf",
+      "secondary": "lightseagreen",
+      "highlight": "#b7ecec",
+      "muted": "#e6e6e6",
+      "gray": "#dfe3e8",
+      "accent": "#f49342",
+      "darken": "#00044c",
+      modes: {
+        dark: {
+          "text": "hsl(210, 50%, 96%)",
+          "background": "hsl(230, 25%, 18%)",
+          "primary": "hsl(260, 100%, 80%)",
+          "secondary": "hsl(290, 100%, 80%)",
+          "highlight": "hsl(260, 20%, 40%)",
+          "purple": "hsl(290, 100%, 80%)",
+          "muted": "hsla(230, 20%, 0%, 20%)",
+          "gray": "hsl(210, 50%, 60%)"
+        }
       }
     },
     fonts: {
-      body: "'Work Sans', serif",
+      body: '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
       heading:
-        '"Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+        '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
       monospace: "Menlo, monospace",
       size: "16px"
     },
@@ -65,7 +106,7 @@ export default {
       body: 1.66,
       heading: 1.125
     },
-    fontSizes: [12, 14, 15, 19, 24, 32, 40, 64, 96],
+    fontSizes: [13, 14, 15, 20, 22, 30, 35, 60, 80],
     space: [0, 4, 8, 16, 38, 64, 128, 256, 512],
   },
   ignore: ['README.md', 'changelog.md', 'code_of_conduct.md', 'contributing.md', 'license.md']

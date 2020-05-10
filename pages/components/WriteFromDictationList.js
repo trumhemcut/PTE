@@ -26,7 +26,7 @@ const WriteFromDictationList = ({ start, total, data }) => {
     return "";
   });
 
-  return <Ol start={start}>{listSentences}</Ol>;
+  return <Ol start={start} key={start}>{listSentences}</Ol>;
 };
 
 WriteFromDictationList.propTypes = {

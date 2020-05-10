@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import t from "prop-types";
-import { Textarea } from "theme-ui";
+import { Textarea, Text } from "theme-ui";
 import { Button } from "theme-ui";
 
 const Question = styled("li")`
@@ -19,51 +19,45 @@ const Audio = styled("audio")`
   margin-top: 8px;
 `;
 
-const NewWord = styled("p")`
+const NewWord = styled("span")`
   margin: 0;
   font-style: italic;
+  display: inline-block;
 `;
 
-const Answer = styled("p")`
-  margin: 0;
-  color: #0B5FFF;
-`
 
-const WriteFromDictation = ({ transcript, audio, times, level, newwords }) => {
+const WriteFromDictation = ({ transcript, audio, times, level, newwords, id }) => {
   const [showTranscript, toggleShowHide] = useState(false);
   const [showAnswer, toggleShowAnswer]= useState(false);
   const [answer, changeAnswer] = useState('');
-  const [isCorrect, checkAnswer] = useState(false);
   const NewWords = newwords.map(w => {
     return <NewWord>{w}</NewWord>;
   });
 
-  const IsCorrectAnswerText = answer !== "" ? isCorrect ? " - Correct" : " - Incorrect" : ""
-
   return (
-    <Question>
+    <Question key={id}>
       <Transcript>
         {showTranscript ? transcript : ""}&nbsp;
         <em>({times} times)</em>&nbsp;-&nbsp;
         {level && <strong>{level}</strong>}
-        {showAnswer ? <Answer>{answer}</Answer>: ""}
+        {showAnswer ? <Text sx={{color: "secondary"}}>{answer}</Text>: ""}
         {NewWords}
       </Transcript>
       <Button
-        mt={0}
+        mt={2}
         ml={0}
-        mb={0}
+        mb={2}
         mr={2}
-        pt={1}
-        pb={1}
+        pt={2}
+        pb={2}
         pl={3}
         pr={3}
         sx={{
           color: "text",
-          bg: "background",
+          bg: "highlight",
           fontSize: 2,
           border: 1,
-          borderColor: "text",
+          borderColor: "highlight",
           borderStyle: "solid",
           borderRadius: 4,
           fontWeight: "bold"
@@ -79,28 +73,30 @@ const WriteFromDictation = ({ transcript, audio, times, level, newwords }) => {
       <Textarea
         onChange={(event) => {
           changeAnswer(event.target.value)
-          checkAnswer(answer === transcript)
         }}
         value={answer}
         placeholder="Write your answer here"
         rows={2}
         sx={{
           fontSize: 3,
-          mb: 1
+          mb: 2,
+          mt: 3
         }}
       />
       <Button
         m={0}
-        pt={1}
-        pb={1}
+        mt={2}
+        mb={2}
+        pt={2}
+        pb={2}
         pl={3}
         pr={3}
         sx={{
-          color: "background",
-          bg: "primary",
+          color: "text",
+          bg: "highlight",
           fontSize: 2,
           border: 1,
-          borderColor: "primary",
+          borderColor: "highlight",
           borderStyle: "solid",
           borderRadius: 4,
           fontWeight: "bold"
@@ -121,7 +117,8 @@ WriteFromDictation.propTypes = {
   audio: t.string,
   times: t.number,
   level: t.string,
-  newwords: t.array
+  newwords: t.array,
+  id: t.string
 };
 
 WriteFromDictation.defaultProps = { newwords: [] };
